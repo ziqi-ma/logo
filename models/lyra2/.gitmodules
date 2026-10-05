@@ -1,0 +1,33 @@
+[submodule "Lyra-2/lyra_2/_src/inference/depth_anything_3"]
+	path = Lyra-2/lyra_2/_src/inference/depth_anything_3
+	url = https://github.com/frankshen07/Depth-Anything-3.git
+[submodule "Lyra-2/lyra_2/_src/inference/vipe"]
+	path = Lyra-2/lyra_2/_src/inference/vipe
+	url = https://github.com/nv-tlabs/vipe.git
+[submodule "Lyra-2/gui/dependencies/pybind11"]
+	path = Lyra-2/gui/dependencies/pybind11
+	url = https://github.com/Tom94/pybind11
+[submodule "Lyra-2/gui/dependencies/glfw"]
+	path = Lyra-2/gui/dependencies/glfw
+	url = https://github.com/Tom94/glfw
+[submodule "Lyra-2/gui/dependencies/args"]
+	path = Lyra-2/gui/dependencies/args
+	url = https://github.com/Taywee/args
+[submodule "Lyra-2/gui/dependencies/tinylogger"]
+	path = Lyra-2/gui/dependencies/tinylogger
+	url = https://github.com/Tom94/tinylogger
+[submodule "Lyra-2/gui/dependencies/imgui"]
+	path = Lyra-2/gui/dependencies/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "Lyra-2/gui/dependencies/dlss"]
+	path = Lyra-2/gui/dependencies/dlss
+	url = https://github.com/NVIDIA/DLSS
+[submodule "Lyra-2/gui/dependencies/OpenXR-SDK"]
+	path = Lyra-2/gui/dependencies/OpenXR-SDK
+	url = https://github.com/KhronosGroup/OpenXR-SDK.git
+[submodule "Lyra-2/gui/dependencies/zlib"]
+	path = Lyra-2/gui/dependencies/zlib
+	url = https://github.com/Tom94/zlib
+[submodule "Lyra-2/gui/dependencies/fmt"]
+	path = Lyra-2/gui/dependencies/fmt
+	url = https://github.com/fmtlib/fmt

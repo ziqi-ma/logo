@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/
+.cache/
+*.mp4
+checkpoints/
+weights/
+/inputs/
+Lyra-2/checkpoints/
+Lyra-2/weights/

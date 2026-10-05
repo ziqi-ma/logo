@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# weights, staged data and run outputs -- these live in object storage, not here
+weights/
+checkpoints/*.pt
+checkpoints/*.safetensors
+*.ckpt
+outputs/
+out/
+wandb/
+results/

@@ -1,0 +1,35 @@
+{
+  "_": "Per-metric normalizers for the LoGo reward on this model: R = sum over terms of sign * weight * (value - mu) / sigma. mu cancels in the per-scene advantage, so sigma is what sets a term's effective weight -- it is the WITHIN-SCENE spread (across the K rollouts of one scene), measured on this model. A sigma from another model or another rollout length silently reweights the term. NFT_NORM_OVERRIDE overrides entries at runtime; NFT_NORM_FILE points elsewhere.",
+  "metrics": {
+    "vggt_mse": {
+      "mu": 0.0251,
+      "sigma": 0.0035,
+      "sign": -1,
+      "what": "RGB reprojection error (squared) of the fused VGGT-Omega cloud. Lower is better."
+    },
+    "vggt_depth_mae": {
+      "mu": 0.13457,
+      "sigma": 0.02769,
+      "sign": -1,
+      "what": "Depth reprojection error (absolute) over covered, unoccluded pixels. Lower is better."
+    },
+    "hpsv3_vid": {
+      "mu": 3.57265,
+      "sigma": 0.30457,
+      "sign": 1,
+      "what": "Mean HPSv3 over keyframes of the rollout clip. Higher is better."
+    },
+    "rpe_rot": {
+      "mu": 9.0,
+      "sigma": 2.0,
+      "sign": -1,
+      "what": "Relative pose error, rotation, in degrees. Lower is better."
+    },
+    "rpe_trans": {
+      "mu": 0.1,
+      "sigma": 0.02,
+      "sign": -1,
+      "what": "Relative pose error, translation, normalized by reference path length. Lower is better."
+    }
+  }
+}

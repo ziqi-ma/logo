@@ -1,0 +1,125 @@
+{
+  "args": {
+    "cond_root": "/inputs/cond",
+    "work_dir": "/outputs/loop",
+    "ckpt_out": "/outputs/adapters",
+    "combo": "reproj_rgbd",
+    "k_rollouts": 16,
+    "scenes_parallel": 8,
+    "num_steps": 250,
+    "guidance": 4.0,
+    "num_sample_steps": 8,
+    "lr": 0.0003,
+    "beta": 1.0,
+    "beta_kl": 0.5,
+    "ema_decay": 0.9,
+    "lora_l2_lambda": 10.0,
+    "lora_l2_target": 1.3,
+    "alt_schedule": "12:5:3",
+    "alt_combo_a": "reproj_rgbd",
+    "alt_combo_b": "hpsv3_only",
+    "alt_combo_c": "camera_only",
+    "adv_clip_max": 1.3,
+    "max_grad_norm": 1.0,
+    "grad_steps": 1,
+    "inner_epochs": 1,
+    "ckpt_every": 1,
+    "keep_rollouts": false,
+    "base_seed": 0,
+    "transformer_path": "./checkpoints/UniView",
+    "model_name": "./checkpoints/Wan2.1-VACE-14B-diffusers",
+    "causvid_lora": "./checkpoints/loras/Wan21_CausVid_14B_T2V_lora_rank32_v2.safetensors",
+    "policy_lora": null,
+    "ref_lora": null,
+    "reward_window": "full",
+    "frames_per_latent": 4,
+    "val_every": 10,
+    "val_k": 4,
+    "val_base_seed": 777000,
+    "val_videogpa": true,
+    "val_videos_uri": "s3://videogen-rl/checkpoints/uniworld/logo/val_videos",
+    "val_hpsv3": true,
+    "scenes_file": "s3://videogen-rl/training_data/uniworld80f/train_scenes_1658.txt",
+    "val_scenes_file": "s3://videogen-rl/training_data/uniworld80f/scene_lists/probes/probe_25.txt"
+  },
+  "reward": {
+    "combo": [
+      [
+        "vggt_mse",
+        0.5
+      ],
+      [
+        "vggt_depth_mae",
+        0.5
+      ]
+    ],
+    "norm": {
+      "vggt_mse": [
+        0.02715,
+        0.00294,
+        -1.0
+      ],
+      "vggt_depth_mae": [
+        0.07654,
+        0.0096,
+        -1.0
+      ],
+      "hpsv3_vid": [
+        3.60732,
+        0.2633,
+        1.0
+      ],
+      "rpe_rot": [
+        35.89925,
+        14.62405,
+        -1.0
+      ],
+      "rpe_trans": [
+        0.12458,
+        0.02216,
+        -1.0
+      ]
+    }
+  },
+  "topology": {
+    "world": 128,
+    "scenes_parallel": 8,
+    "ranks_per_scene": 16,
+    "k_local": 1,
+    "k_rollouts": 16
+  },
+  "schedule": {
+    "timesteps": [
+      1000.0,
+      967.9232177734375,
+      926.4033813476562,
+      870.5511474609375,
+      791.39697265625,
+      670.5145263671875,
+      463.0956726074219,
+      24.414066314697266
+    ],
+    "sigmas": [
+      1.0,
+      0.9679232239723206,
+      0.9264034032821655,
+      0.8705511689186096,
+      0.791396975517273,
+      0.6705145239830017,
+      0.46309566497802734,
+      0.0244140662252903,
+      0.0
+    ]
+  },
+  "voxel": {
+    "alpha": 0.1,
+    "mix": 0.5,
+    "local": 0.5,
+    "temporal": "frame",
+    "patch": [
+      60,
+      104
+    ],
+    "depth_cap": 4.0
+  }
+}

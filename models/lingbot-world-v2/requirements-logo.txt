@@ -1,0 +1,34 @@
+# What LoGo's training + reward path adds on top of requirements.txt. Both install into
+# THE SAME environment -- training computes the reward in-process, so they cannot be split.
+
+# RL loop
+peft
+wandb
+boto3
+
+addict==2.4.0
+einops==0.8.1
+evo==1.36.5
+gsplat==1.5.3
+huggingface-hub==0.35.3
+kornia==0.8.2
+lpips==0.1.4
+matplotlib==3.10.7
+moviepy==2.2.1
+omegaconf==2.3.0
+piq==0.8.0
+pillow==11.1.0
+plyfile==1.1.3
+pycolmap==4.0.4
+trimesh==4.12.2
+
+# Not on PyPI -- install from their own repos (./stage.sh does this):
+#   pip install --no-deps \
+#     git+https://github.com/facebookresearch/vggt-omega.git \
+#     git+https://github.com/EasternJournalist/utils3d.git \
+#     git+https://github.com/microsoft/MoGe.git
+#
+# Separate interpreters, not installable next to the training env:
+#   hpsv3      -- the HPSv3 reward model (validation only; HPSV3_PY)
+#   lightglue  -- the feature matcher the epipolar metric uses (eval --videogpa only)
+#   droid      -- DROID-SLAM, used only by the deprecated wseval scorer

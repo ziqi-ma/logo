@@ -1,0 +1,25 @@
+__pycache__/
+.DS_Store
+.vscode*
+output/
+logs/
+*.mp4
+*.json
+*.pth
+*.zip
+
+# Local convenience symlinks into ../lingbot-world-v2 (the 86GB checkpoint dir, ws_eval).
+lingbot-world-v2-14b-causal-fast
+ws_eval
+
+# `*.json` above is wholesale, but the per-run configs and the provenance behind them ARE
+# json and have to be tracked -- without these negations `git add runs/` silently skips
+# every .provenance.json, INDEX.json and _provenance/**.json, and the archive quietly
+# loses the record of how each run was configured.
+!runs/**/*.json
+!runs/*.json
+
+# stage.sh downloads weights here
+weights/
+/data/          # ./stage.sh downloads the training scenes here
+out/

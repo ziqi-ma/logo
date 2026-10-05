@@ -1,0 +1,32 @@
+# Dependencies of the shared reward path (rewards/scorers/*), which the models' own
+# requirements files do not all declare -- in the training images they came preinstalled
+# in the base layer. Versions are the ones this was verified against.
+#
+# Always needed (the LoGo geometry reward: reproj_rgbd, reproj_voxel, camera_rpe):
+numpy
+torch
+opencv-python
+piq            # SSIM, via video_gpa/metrics/mse.py -- imported on the reproj_rgbd path
+lpips          # the consistency scorer's perceptual term
+plyfile
+#
+# Not on PyPI -- install from their own repositories:
+#   pip install --no-deps \
+#     git+https://github.com/facebookresearch/vggt-omega.git \
+#     git+https://github.com/EasternJournalist/utils3d.git \
+#     git+https://github.com/microsoft/MoGe.git \
+#     git+https://github.com/ByteDance-Seed/Depth-Anything-3.git
+#
+#   The last one is needed even at the default VIDEOGPA_BACKBONES=vggt: the VGGT path imports
+#   its geometry helpers (affine_inverse, unproject_depth). Each model's stage.sh/setup.sh
+#   installs all of these.
+#
+# Only for the optional eval metrics, not for the reward:
+#   kornia, lightglue   -- the epipolar metric (eval --videogpa)
+#
+# Separate interpreters, never installed next to a training env (each pins its own
+# transformers):
+#   hpsv3        -- scorers/hpsv3.py, under HPSV3_PY
+#   VideoAlign   -- scorers/videoreward.py, under VIDEOREWARD_PY
+#                   git clone https://github.com/KwaiVGI/VideoAlign   -> VIDEOALIGN_SRC
+#                   huggingface-cli download KwaiVGI/VideoReward      -> VIDEOREWARD_CKPT

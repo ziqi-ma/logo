@@ -1,0 +1,12 @@
+.git
+checkpoints/**
+!checkpoints/download_hf.py
+!stage.sh
+output/
+test/videos/
+test/images/
+extern/vipe/.git
+extern/STream3R/.git
+extern/sam2/.git
+**/__pycache__/
+*.pyc
