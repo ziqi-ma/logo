@@ -34,7 +34,7 @@
     "NFT_REWARD_MIX": "0.5",
     "NFT_REWARD_VOXEL": "0.1",
     "NFT_TRAIN_TIMESTEPS": "0",
-    "NFT_VOXEL_LOCAL": "0.5",
+    "NFT_VOXEL_LOCAL": "0",
     "NFT_VOXEL_PATCH": "latent",
     "NUM_FRAMES": "241",
     "NUM_STEPS": "300",

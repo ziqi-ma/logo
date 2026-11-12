@@ -27,7 +27,7 @@ rather than passed as flags:
 | | |
 |---|---|
 | reward | `NFT_COMBO=reproj_rgbd` = `[[vggt_mse, 0.5], [vggt_depth_mae, 0.5]]` |
-| voxel reward | `NFT_REWARD_VOXEL=0.1` (voxel edge = 0.1 x frame-1 p90 depth), `NFT_VOXEL_LOCAL=0.5` |
+| voxel reward | `NFT_REWARD_VOXEL=0.1` (voxel edge = 0.1 x frame-1 p90 depth), `NFT_VOXEL_LOCAL=0` |
 | local/global mix | `NFT_REWARD_MIX=0.5` |
 | optimization | `LR=3e-4`, `NFT_BETA_KL=1e-4`, `NFT_BETA=1`, `EMA_DECAY=0.9`, `ADV_CLIP_MAX=1.3`, `GRAD_STEPS=1`, `INNER_EPOCHS=1` |
 | rollouts | `K_ROLLOUTS=16`, `SCENES_PARALLEL=8`, `NUM_STEPS=75`, `NUM_FRAMES=241` |

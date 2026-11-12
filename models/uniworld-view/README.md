@@ -42,7 +42,7 @@ The config is the run — `train.sh` emits its `args` as flags and its `voxel` b
 | | |
 |---|---|
 | reward | `combo reproj_rgbd` = `[[vggt_mse, 0.5], [vggt_depth_mae, 0.5]]`, `alt_schedule 12:5:3` over reproj_rgbd / hpsv3_only / camera_only |
-| voxel reward | `voxel.alpha 0.1` (voxel edge = 0.1 x frame-1 p90 depth), `voxel.patch 60x104` (the full latent grid), `voxel.local 0.5`, `voxel.depth_cap 4.0` |
+| voxel reward | `voxel.alpha 0.1` (voxel edge = 0.1 x frame-1 p90 depth), `voxel.patch 60x104` (the full latent grid), `voxel.local 0`, `voxel.depth_cap 4.0` |
 | local/global mix | `voxel.mix 0.5` |
 | optimization | `lr 3e-4`, `beta_kl 0.5`, `beta 1.0`, `ema_decay 0.9`, `adv_clip_max 1.3`, `lora_l2_lambda 10.0`, `lora_l2_target 1.3` |
 | rollouts | `k_rollouts 16`, `scenes_parallel 8`, `num_steps 250`, `num_sample_steps 8`, `guidance 4.0` |

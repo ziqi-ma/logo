@@ -81,7 +81,12 @@ def _align_depth_to_moge(depth_hw, mask_hw, img_rgb_uint8, target_hw):
                     f"and the clip's geometry will be off", rank0_only=True)
         return depth_hw
 
-    dev = depth_hw.device
+    # The DA3 depth arrives on the CPU (torch.from_numpy), so its device would put MoGe on
+    # the CPU too: ~6 min per clip on a loaded box. Run MoGe on the GPU and hand the depth
+    # back on the caller's device.
+    in_dev = depth_hw.device
+    dev = torch.device("cuda") if torch.cuda.is_available() else in_dev
+    depth_hw = depth_hw.to(dev)
     if _MOGE_MODEL is None:
         _MOGE_MODEL = load_moge_model(dev)
         _MOGE_MODEL.eval()
@@ -100,20 +105,20 @@ def _align_depth_to_moge(depth_hw, mask_hw, img_rgb_uint8, target_hw):
     valid = (mask_hw.to(dev) > 0.5) & (moge_mask_hw.to(dev) > 0.5)
     if valid.sum() <= 10:
         log.warning("[sample] MoGe/DA3 overlap too small to fit the depth scale", rank0_only=True)
-        return depth_hw
+        return depth_hw.to(in_dev)
     inv_da3 = 1.0 / (depth_hw[valid] + 1e-6)
     inv_moge = 1.0 / (moge_depth_hw[valid] + 1e-6)
     den = (inv_da3 * inv_da3).sum()
     if den <= 1e-8:
         log.warning("[sample] degenerate depth-scale fit; leaving DA3 depth as is", rank0_only=True)
-        return depth_hw
+        return depth_hw.to(in_dev)
     scale = ((inv_da3 * inv_moge).sum() / den).item()
     if scale <= 1e-6:
         log.warning(f"[sample] depth-scale fit returned {scale:.3g}; leaving DA3 depth as is",
                     rank0_only=True)
-        return depth_hw
+        return depth_hw.to(in_dev)
     log.info(f"[sample] fitted DA3->MoGe depth scale {scale:.4f}", rank0_only=True)
-    return depth_hw / scale
+    return (depth_hw / scale).to(in_dev)
 
 
 def build_scene_data_batch(model, da3_model, *, image_path: str, traj_file: str,

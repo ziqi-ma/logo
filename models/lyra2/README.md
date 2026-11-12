@@ -33,7 +33,7 @@ read from the environment by `nft_voxel.py` / `nft_score.py` rather than passed 
 | | |
 |---|---|
 | reward | `NFT_COMBO=reproj_rgbd`, schedule `reproj_rgbd_g70:5,hpsv3_only:6,camera_only:3` |
-| voxel reward | `NFT_REWARD_VOXEL=0.1` (voxel edge = 0.1 x frame-1 p90 depth), `NFT_VOXEL_PATCH=latent`, `NFT_VOXEL_LOCAL=0.5` |
+| voxel reward | `NFT_REWARD_VOXEL=0.1` (voxel edge = 0.1 x frame-1 p90 depth), `NFT_VOXEL_PATCH=latent`, `NFT_VOXEL_LOCAL=0` |
 | voxel/global mix | `NFT_REWARD_MIX=0.5` |
 | optimization | `LR=3.33e-5`, `NFT_BETA_KL=1e-4`, `EMA_DECAY=0.9`, `GRAD_STEPS=1`, `INNER_EPOCHS=1` |
 | rollouts | `K_ROLLOUTS=16`, `SCENES_PARALLEL=8`, `NUM_STEPS=300`, `NUM_FRAMES=241`, `RESOLUTION=480,832`, `POSE_SCALE=0.4` |
